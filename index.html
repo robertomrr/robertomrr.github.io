@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R. Moreira — Desenvolvedor Laravel/PHP</title>
+<meta name="description" content="R. Moreira, desenvolvedor web em Laravel e PHP. Aplicações completas: banco de dados, back-end, interface e servidor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#E9EEF1;      /* fundo frio, cinza-azulado */
+    --tinta:#17263B;      /* azul-marinho de tinta */
+    --pinheiro:#2E5A4C;   /* verde araucária */
+    --sinal:#E2B13C;      /* amarelo de destaque */
+    --nevoa:#C9D3DA;      /* linhas e camadas claras */
+    --suave:#4A5B6E;      /* texto secundário */
+    --display:"Bricolage Grotesque", system-ui, sans-serif;
+    --texto:"Instrument Sans", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--papel);color:var(--tinta);
+    font-family:var(--texto);font-size:1.0625rem;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  a:focus-visible{outline:3px solid var(--sinal);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:68rem;margin:0 auto;padding:0 1.5rem}
+
+  /* Topo */
+  header.topo{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0}
+  .marca{font-family:var(--display);font-weight:800;font-size:1.125rem;text-decoration:none}
+  nav a{margin-left:1.5rem;text-decoration:none;font-weight:500;color:var(--suave)}
+  nav a:hover{color:var(--tinta)}
+
+  /* Hero: o nome à esquerda, a pilha de camadas à direita */
+  .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:end;padding:4rem 0 5rem}
+  .hero h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(3rem,8vw,6.25rem);line-height:.92;letter-spacing:-.03em;
+  }
+  .hero p{margin-top:1.75rem;max-width:30rem;font-size:1.1875rem;color:var(--suave)}
+  .hero .local{margin-top:1rem;font-size:.9375rem;color:var(--suave)}
+
+  .pilha{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+  .pilha li{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:1rem 1.25rem;border-radius:4px;
+    font-family:var(--display);font-weight:600;font-size:1.25rem;
+    transform-origin:left center;
+  }
+  .pilha small{font-family:var(--texto);font-weight:400;font-size:.875rem;opacity:.8}
+  .pilha li:nth-child(1){background:var(--sinal);color:var(--tinta);margin-right:0}
+  .pilha li:nth-child(2){background:var(--tinta);color:var(--papel);margin-right:1.5rem}
+  .pilha li:nth-child(3){background:var(--pinheiro);color:var(--papel);margin-right:3rem}
+  .pilha li:nth-child(4){background:var(--nevoa);color:var(--tinta);margin-right:4.5rem}
+  .pilha li:nth-child(5){background:transparent;border:2px solid var(--tinta);margin-right:6rem}
+  .pilha-legenda{margin-top:.75rem;font-size:.875rem;color:var(--suave)}
+
+  @media (prefers-reduced-motion:no-preference){
+    .pilha li{animation:empilha .6s cubic-bezier(.2,.7,.2,1) both}
+    .pilha li:nth-child(5){animation-delay:.05s}
+    .pilha li:nth-child(4){animation-delay:.15s}
+    .pilha li:nth-child(3){animation-delay:.25s}
+    .pilha li:nth-child(2){animation-delay:.35s}
+    .pilha li:nth-child(1){animation-delay:.45s}
+    @keyframes empilha{from{opacity:0;transform:translateY(14px) scaleX(.92)}to{opacity:1;transform:none}}
+  }
+
+  /* Seções */
+  section.bloco{padding:4.5rem 0;border-top:2px solid var(--tinta)}
+  section.bloco h2{
+    font-family:var(--display);font-weight:800;font-size:clamp(2rem,4vw,2.75rem);
+    letter-spacing:-.02em;line-height:1.05;margin-bottom:2.5rem;
+  }
+
+  /* Projetos: lista com nome grande à esquerda */
+  .projeto{display:grid;grid-template-columns:16rem 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--nevoa)}
+  .projeto:last-child{border-bottom:0}
+  .projeto h3{font-family:var(--display);font-weight:600;font-size:1.75rem;line-height:1.1}
+  .projeto .estado{display:inline-block;margin-top:.5rem;font-size:.875rem;color:var(--pinheiro);font-weight:600}
+  .projeto p{max-width:40rem}
+  .projeto ul{margin-top:1rem;padding-left:1.1rem;max-width:40rem}
+  .projeto li{margin-bottom:.35rem}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;list-style:none;padding:0!important}
+  .tags li{margin:0;font-size:.8125rem;font-weight:500;padding:.2rem .65rem;border-radius:999px;background:#fff;border:1px solid var(--nevoa)}
+
+  /* Habilidades */
+  .grupos{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+  .grupos h3{font-family:var(--display);font-weight:600;font-size:1.25rem;margin-bottom:.75rem}
+  .grupos ul{list-style:none}
+  .grupos li{padding:.4rem 0;border-bottom:1px solid var(--nevoa)}
+
+  /* Contato */
+  .contato{background:var(--tinta);color:var(--papel);border-top:0}
+  .contato h2{color:var(--papel)}
+  .contato p{max-width:34rem;color:var(--nevoa)}
+  .links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+  .links a{
+    display:inline-block;padding:.85rem 1.4rem;border-radius:4px;
+    font-weight:600;text-decoration:none;
+    background:var(--sinal);color:var(--tinta);
+  }
+  .links a.sec{background:transparent;color:var(--papel);border:2px solid var(--papel)}
+  .links a:hover{filter:brightness(1.08)}
+  footer{background:var(--tinta);color:var(--suave);padding:0 0 2rem;font-size:.875rem}
+  footer .wrap{border-top:1px solid #2C3D55;padding-top:1.5rem;color:#8A9BAE}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;padding:2.5rem 0 3.5rem}
+    .projeto{grid-template-columns:1fr;gap:.75rem}
+    .grupos{grid-template-columns:1fr;gap:2rem}
+    nav a{margin-left:1rem}
+    .pilha li:nth-child(n){margin-right:0}
+  }
+  @media (max-width:480px){ nav{display:none} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="topo">
+    <a class="marca" href="#">R. Moreira</a>
+    <nav aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Roberto<br>Moreira</h1>
+        <p>Desenvolvedor web. Construo aplicações em Laravel e PHP de ponta a ponta: do banco de dados ao servidor em produção.</p>
+        <p class="local">São José dos Pinhais, Paraná</p>
+      </div>
+      <div>
+        <ol class="pilha" aria-label="Camadas em que trabalho, da interface ao servidor">
+          <li>Interface <small>Livewire · Tailwind</small></li>
+          <li>Aplicação <small>Laravel · PHP 8.3</small></li>
+          <li>Dados <small>PostgreSQL · Redis</small></li>
+          <li>Arquivos <small>AWS S3</small></li>
+          <li>Servidor <small>Linux · SSH</small></li>
+        </ol>
+        <p class="pilha-legenda">Cada camada de uma aplicação, e eu cuido de todas.</p>
+      </div>
+    </div>
+
+    <section class="bloco" id="projetos">
+      <h2>Projetos</h2>
+
+      <article class="projeto">
+        <div>
+          <h3>Privpedia</h3>
+          <span class="estado">Em desenvolvimento</span>
+        </div>
+        <div>
+          <p>Plataforma pessoal e multiusuário que reúne conteúdo público (blog, livros, álbum de fotos e vídeos) e registros privados de cada usuário, como agenda, contas, documentos e viagens.</p>
+          <ul>
+            <li>Arquitetura modular: cada módulo com modelos, armazenamento e termos de uso próprios.</li>
+            <li>Termos de uso alinhados à LGPD e ao Marco Civil da Internet.</li>
+            <li>Publicação cruzada do blog no LinkedIn via OAuth 2.0.</li>
+            <li>Integração com a API do Claude dentro da aplicação.</li>
+          </ul>
+          <ul class="tags" aria-label="Tecnologias">
+            <li>Laravel 12</li><li>PHP 8.3</li><li>PostgreSQL 16</li><li>Redis</li><li>Livewire 3</li><li>Flux UI</li><li>Tailwind</li><li>daisyUI</li><li>S3</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="projeto">
+        <div>
+          <h3>Tempus</h3>
+          <span class="estado">Em desenvolvimento</span>
+        </div>
+        <div>
+          <p>Aplicação Laravel organizada em módulos (álbum, playlist, livros, links, blog, comprovantes), com dados isolados por usuário e convenções de projeto documentadas.</p>
+          <ul>
+            <li>Chamadas diretas à API da Anthropic com o cliente HTTP do Laravel, com repetição e espera progressiva em caso de falha.</li>
+            <li>Painel de consumo de tokens em tempo real com Laravel Reverb e WebSockets.</li>
+            <li>Tabelas com prefixo por módulo num único schema do PostgreSQL.</li>
+          </ul>
+          <ul class="tags" aria-label="Tecnologias">
+            <li>Laravel</li><li>PostgreSQL</li><li>Laravel Reverb</li><li>WebSockets</li><li>API do Claude</li><li>S3</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="projeto">
+        <div>
+          <h3>App Android</h3>
+          <span class="estado">Em desenvolvimento</span>
+        </div>
+        <div>
+          <p>Aplicativo móvel em React Native, com ambiente de desenvolvimento montado inteiramente na linha de comando, no WSL2.</p>
+          <ul>
+            <li>Android SDK sem interface gráfica, com depuração via ADB e usbipd-win.</li>
+            <li>Preparação para a Google Play: build assinada, Play Console e trilhas de teste.</li>
+          </ul>
+          <ul class="tags" aria-label="Tecnologias">
+            <li>React Native</li><li>Android SDK</li><li>ADB</li><li>WSL2</li><li>Google Play Console</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="bloco" id="habilidades">
+      <h2>Habilidades</h2>
+      <div class="grupos">
+        <div>
+          <h3>Back-end</h3>
+          <ul>
+            <li>PHP e Laravel</li>
+            <li>APIs REST e OAuth 2.0</li>
+            <li>Filas, cache e WebSockets</li>
+            <li>Integração com IA (API do Claude)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Dados e infraestrutura</h3>
+          <ul>
+            <li>PostgreSQL: modelagem, migrações, pg_dump e pg_restore</li>
+            <li>Redis</li>
+            <li>AWS S3</li>
+            <li>Servidores Linux e SSH</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ferramentas</h3>
+          <ul>
+            <li>PhpStorm</li>
+            <li>WSL2 com Ubuntu</li>
+            <li>Git e GitHub</li>
+            <li>Claude Code</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<section class="bloco contato" id="contato">
+  <div class="wrap">
+    <h2>Contato</h2>
+    <p>Quer conversar sobre um projeto ou uma oportunidade? Mande uma mensagem.</p>
+    <div class="links">
+      <a href="mailto:robertomrr@yahoo.com.br">Enviar e-mail</a>
+      <!-- TROQUE o href abaixo pelo endereço do seu perfil no LinkedIn -->
+      <a class="sec" href="https://www.linkedin.com/in/SEU-PERFIL" rel="me noopener">LinkedIn</a>
+      <a class="sec" href="https://github.com/robertomrr" rel="me noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">© 2026 Roberto Moreira</div>
+</footer>
+
+</body>
+</html>
